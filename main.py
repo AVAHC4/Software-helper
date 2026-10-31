@@ -1,4 +1,4 @@
-question = input("What is your Question: ")
+question = input("What is your Question: ").strip()
 if question == "":
     print("Please ask a valid Question")
 else:
