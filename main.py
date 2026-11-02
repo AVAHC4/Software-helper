@@ -10,3 +10,4 @@ response = client.interactions.create(
     model="YOUR_MODEL_NAME",
     input=question,
 )
+print(response.outputs[-1].text)
