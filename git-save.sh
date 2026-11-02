@@ -10,18 +10,16 @@ fi
 
 echo "Changes to commit:"
 git status --short
+printf 'Describe your changes for the commit message: '
+IFS= read -r message
+if [ -z "$message" ]; then
+    echo "A commit message is required."
+    exit 1
+fi
 branch=$(git symbolic-ref --quiet --short HEAD) || {
     echo "Check out a branch before pushing."
     exit 1
 }
 git add -A
-count=$(git diff --cached --name-only | wc -l | tr -d ' ')
-if [ "$count" -eq 1 ]; then
-    file=$(git diff --cached --name-only)
-    message="Update $file"
-else
-    message="Update $count project files"
-fi
-echo "Commit message: $message"
 git commit -m "$message"
 git push -u origin "$branch"
