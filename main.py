@@ -23,7 +23,7 @@ def main() -> int:
         return 1
 
     try:
-        with genai.Cient() as client:
+        with genai.Client() as client:
             response = client.interactions.create(model=MODEL, input=question)
     except errors.APIError as error:
         print(f"Gemini request failed (HTTP {error.code}). Check your key, model access, and quota.", file=sys.stderr)
