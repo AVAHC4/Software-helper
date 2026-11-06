@@ -29,7 +29,7 @@ def main() -> int:
         print(f"Gemini request failed (HTTP {error.code}). Check your key, model access, and quota.", file=sys.stderr)
         return 1
     except httpx.RequestError:
-        print("Could not connect to Gemini. Check your network connection.", file=sys.stderr)
+        print("Could not connct to Gemini. Check your network connection.", file=sys.stderr)
         return 1
 
     if not response.output_text:
